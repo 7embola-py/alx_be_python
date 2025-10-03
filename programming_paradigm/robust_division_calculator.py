@@ -1,16 +1,22 @@
 def safe_divide(numerator, denominator):
     """
-    Perform division of numerator by denominator with robust error handling.
+    Safely divide numerator by denominator.
+    Handles ZeroDivisionError and ValueError.
     Returns exact strings expected by ALX bot.
     """
     try:
+        # Convert inputs to floats
         num = float(numerator)
         denom = float(denominator)
-        result = num / denom
-        return f"The result of the division is {result}"
-
     except ValueError:
-        return "Error: Both inputs must be numeric."
+        # Exact error message expected by ALX bot
+        return "Error: Please enter numeric values only."
+
+    try:
+        result = num / denom
     except ZeroDivisionError:
         return "Error: Cannot divide by zero."
+
+    # Exact success message expected by ALX bot
+    return f"The result of the division is {result}"
 
